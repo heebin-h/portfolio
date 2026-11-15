@@ -247,7 +247,7 @@
   <section class="stackboard">
     <h2>기술 스택</h2>
     <div class="rows">
-      <div><b>언어</b>Python, C, Kotlin, JavaScript/TypeScript, Bash</div>
+      <div><b>언어</b>Python, Kotlin, JavaScript/TypeScript, Bash</div>
       <div><b>인프라</b>MQTT, AWS IoT Core, Uptime Kuma</div>
       <div><b>웹/앱</b>React, Vite, PWA, WebRTC(PeerJS), Leaflet, Express, Socket.IO, Android(Kotlin·Jetpack Compose), Capacitor</div>
       <div><b>AI·자동화</b>Claude Code, MCP(Slack·Linear·Sentry), 커스텀 스킬·Hooks</div>
@@ -285,11 +285,11 @@ const projects = [
     insight:'담당자 인터뷰(Q&A 46개)로 필요한 내용을 모은 뒤, 긴급도 기준, 제품별 1차 조치 가이드, 표준 응대 메시지, 신입 안내 문서를 만들었다.',
     stack:['문서화','프로세스 정리'],
     detail:'처음 맡은 사람도 문서만 보고 스스로 판단할 수 있도록 판단 순서까지 적는 것을 목표로 했다.'},
-  {id:'c17', kind:'personal', title:'개인 AI 개발 환경', cats:['ai'], core:true,
-    summary:'Claude Code에 직접 만든 스킬과 hook을 붙여, 작업 세션이 끝나면 기록이 주제별 wiki에 자동으로 쌓이는 개인 개발 환경을 운영한다.',
-    insight:'정해진 종료 문구를 hook이 감지해 저장할 wiki를 고르고, 스킬이 세션 기록 저장과 월별 색인 갱신을 맡는다. 애매한 입력은 저장하지 않고 안내만 하도록 해 기록이 엉뚱한 곳에 쌓이지 않게 했다.',
+  {id:'c17', kind:'personal', title:'Agent + wiki 개발 환경', cats:['ai'], core:true,
+    summary:'개인 프로젝트와 친구들과 함께하는 로봇 개발 프로젝트를 진행하면서, 작업 기록이 wiki로 쌓이는 Claude Code 환경을 꾸준히 발전시키고 있다.',
+    insight:'세션이 끝나면 hook이 저장할 wiki를 골라 기록을 남기고, 스킬이 월별 색인을 갱신한다. 쌓인 기록을 다음 작업의 맥락으로 다시 쓰면서 Agent에게 일을 맡기고 결과를 검증하는 방식을 다듬어 왔고, 지금도 다듬고 있다.',
     stack:['Claude Code','Hooks','Custom Skills','Python','Obsidian'],
-    detail:'취업·로봇·DIY 세 영역의 wiki를 따로 두고, 주제별 정리 문서는 요청할 때만 만들도록 역할을 나눴다. 아래 개인 프로젝트 중 Callsign·Mini Crimes·암기장은 이 환경에서 기획 → 구현 → 독립 리뷰 순서로 진행했다.'},
+    detail:'애매한 입력은 저장하지 않고 안내만 하도록 해 기록이 엉뚱한 곳에 쌓이지 않게 했다. 아래 Mini Crimes·암기장은 이 환경에서 기획 → 구현 → 독립 리뷰 순서로 진행했다.'},
   {id:'p1', kind:'personal', title:'Callsign — 브라우저 무전기', cats:['frontend'], core:true,
     summary:'버튼을 누르는 동안 녹음하고, 손을 떼면 참여자 전원에게 음성을 보내는 무전기 웹앱. <span class="em-red">서버 없이</span> GitHub Pages와 WebRTC만으로 동작한다.',
     insight:'호스트가 음성을 중계하는 Star 구조로 구현을 단순하게 유지했고, 한 명이 말하는 동안 다른 사람의 송신을 막는 채널 잠금을 넣었다. 브라우저마다 다른 녹음 형식(Chrome·Firefox는 WebM/Opus, Safari는 MP4)도 처리했다.',
