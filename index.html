@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍희빈 — 포트폴리오</title>
+<meta name="description" content="풀스택 개발자 홍희빈 — 임베디드·백엔드·웹·Android, Claude Code·MCP 기반 AI 자동화 프로젝트 모음">
+<meta property="og:title" content="홍희빈 — 포트폴리오">
+<meta property="og:description" content="HW부터 웹·앱까지 직접 만들고, AI로 더 빠르게 일합니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#16A34A;
+    --panel:#FFFFFF;
+    --ink:#0F3D24;
+    --muted:#4B7C63;
+    --accent:#15803D;
+    --accent-ink:#FFFFFF;
+    --line:#E2E8E4;
+    --page:#F5F9F6;
+    --sans:'Pretendard Variable','Pretendard',-apple-system,'Apple SD Gothic Neo',sans-serif;
+    --red:#DC2626;
+    --work-bg:rgba(21,128,61,0.07);
+    --work-line:rgba(21,128,61,0.20);
+    --personal-bg:rgba(37,99,235,0.06);
+    --personal-line:rgba(37,99,235,0.20);
+    --personal-ink:#1D4ED8;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  html{font-size:15px;}
+  @media (min-width:1200px){html{font-size:16px;}}
+  @media (min-width:1600px){html{font-size:17px;}}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+  .bg-decor{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+  .bg-decor i{position:absolute;display:block;}
+  .bg-decor .dot-s{width:0.5rem;height:0.5rem;border-radius:50%;}
+  .bg-decor .dot-m{width:0.75rem;height:0.75rem;border-radius:50%;}
+  .bg-decor .ring{width:1.125rem;height:1.125rem;border-radius:50%;border:0.125rem solid currentColor;}
+  .bg-decor .plus{width:0.875rem;height:0.875rem;}
+  .bg-decor .plus::before,.bg-decor .plus::after{content:'';position:absolute;background:currentColor;border-radius:1px;}
+  .bg-decor .plus::before{left:0.375rem;top:0;width:0.125rem;height:0.875rem;}
+  .bg-decor .plus::after{top:0.375rem;left:0;width:0.875rem;height:0.125rem;}
+  .g{background:#22C55E;color:#22C55E;opacity:.45;}
+  .b{background:#3B82F6;color:#3B82F6;opacity:.35;}
+  .r{background:#EF4444;color:#EF4444;opacity:.35;}
+  .bg-decor .ring,.bg-decor .plus{background:none;}
+  a{color:var(--accent);}
+  .wrap{--pad-y:clamp(12px,1.8vw,32px);--gap:clamp(12px,1.3vw,26px);--card-pad:clamp(16px,1.4vw,28px);margin:0;padding:var(--pad-y) clamp(16px,3vw,72px) 6rem;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--bg);
+    border-radius:1.5rem;
+    padding:clamp(28px,4vw,80px) clamp(22px,4.5vw,96px);
+    display:grid;
+    grid-template-columns:minmax(0,1.4fr) minmax(0,0.6fr);
+    gap:1.5rem;
+    align-items:center;
+    margin-bottom:2.25rem;
+    box-shadow:0 1rem 2.5rem rgba(15,61,36,0.18);
+    position:relative;
+    min-height:calc(100vh - 2 * var(--pad-y));
+    min-height:calc(100svh - 2 * var(--pad-y));
+  }
+  @media (max-width:719px){.hero{grid-template-columns:1fr;}}
+  .keywords{display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1rem;}
+  .kw{display:inline-block;font-size:0.8125rem;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,0.3);border:1px solid #FFFFFF;border-radius:62.4375rem;padding:0.25rem 0.75rem;}
+  .hero h1{font-size:3.75rem;line-height:1.15;font-weight:700;margin:0 0 0.5rem;color:#FFFFFF;}
+  .hero p.bio{font-size:1.125rem;line-height:1.75;max-width:52ch;margin:0 0 0.625rem;color:#F3FCF6;}
+  /* 타이포 구간 고정 (docs/responsive-design.md §3) */
+  @media (max-width:719px){.hero h1{font-size:2.75rem;}.hero p.bio{font-size:1.0625rem;}}
+  @media (min-width:720px) and (max-width:1199px){.hero h1{font-size:3.25rem;}}
+  @media (min-width:1600px){.hero h1{font-size:4.25rem;}}
+  .hero p.bio-sub{font-size:0.8438rem;margin:0 0 1.25rem;color:#DDF5E5;}
+  .em-red{color:var(--red);font-weight:700;}
+  .em-ul{text-decoration:underline;text-decoration-thickness:0.125rem;text-underline-offset:0.25rem;}
+  .cta{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .btn{display:inline-block;font-size:0.875rem;font-weight:700;text-decoration:none;border-radius:62.4375rem;padding:0.5625rem 1.125rem;}
+  .btn.primary{background:#FFFFFF;color:#0F3D24;}
+  .btn.ghost{border:0.0938rem solid rgba(255,255,255,0.8);color:#FFFFFF;}
+  .btn.solid{background:var(--accent);color:var(--accent-ink);}
+  .icon-panel{display:flex;align-items:center;justify-content:center;}
+  .icon-panel .circle{width:clamp(140px,22vw,440px);height:clamp(140px,22vw,440px);border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;}
+  .icon-panel svg{width:60%;height:auto;}
+  @media (max-width:719px){.icon-panel{display:none;}}
+
+  /* ---------- section ---------- */
+  .section-head{margin:2.5rem 0 0.875rem;}
+  .section-head h2{font-size:1.375rem;font-weight:800;margin:0;letter-spacing:-0.01em;}
+  .section-head p{font-size:0.875rem;color:var(--muted);margin:0.25rem 0 0;}
+  .proj-section{border-radius:1.5rem;padding:clamp(16px,2vw,40px);margin-top:1.5rem;}
+  .proj-section.hidden{display:none;}
+  .proj-section .section-head{margin:0 0 1rem;}
+  .proj-section.work{background:var(--work-bg);border:1px solid var(--work-line);}
+  .scroll-cue{position:absolute;left:50%;bottom:1.375rem;transform:translateX(-50%);font-size:0.8125rem;font-weight:600;color:rgba(255,255,255,0.85);text-decoration:none;}
+  .scroll-cue:hover{color:#FFFFFF;}
+  .proj-section.personal{background:var(--personal-bg);border:1px solid var(--personal-line);}
+  .sec-label{display:inline-block;font-family:var(--mono);font-size:0.6875rem;font-weight:700;letter-spacing:0.08em;border-radius:0.375rem;padding:0.125rem 0.5rem;margin-bottom:0.5rem;}
+  .work .sec-label{color:var(--accent);border:1px solid var(--work-line);}
+  .personal .sec-label{color:var(--personal-ink);border:1px solid var(--personal-line);}
+
+  /* ---------- filter ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:0.5rem;margin:0 0 0.25rem;}
+  .chip{font-family:var(--sans);font-size:0.8438rem;padding:0.5rem 1rem;border:1px solid var(--line);border-radius:62.4375rem;background:var(--panel);color:var(--muted);cursor:pointer;}
+  .chip:hover{border-color:var(--accent);color:var(--ink);}
+  .chip.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700;}
+
+  /* ---------- cards ---------- */
+  .grid{display:grid;grid-template-columns:1fr;gap:var(--gap);align-items:start;}
+  @media (min-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media (min-width:1200px){.proj-section.personal .grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+  @media (min-width:1600px){.proj-section.work .grid{grid-template-columns:repeat(4,minmax(0,1fr));}}
+  .card{background:var(--panel);border-radius:1rem;padding:var(--card-pad);box-shadow:0 0.25rem 1rem rgba(15,61,36,0.06);min-width:0;}
+  .card.hidden{display:none;}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:0.625rem;margin-bottom:0.375rem;}
+  .card h3{font-size:1.0312rem;margin:0;font-weight:700;}
+  .dot{display:inline-block;width:0.5rem;height:0.5rem;border-radius:50%;background:var(--line);margin-right:0.5rem;vertical-align:middle;}
+  .card.core .dot{background:var(--accent);}
+  .badge{font-size:0.6875rem;color:var(--accent-ink);background:var(--accent);border-radius:62.4375rem;padding:0.125rem 0.5625rem;white-space:nowrap;}
+  .tags{font-size:0.75rem;color:var(--muted);margin-bottom:0.625rem;}
+  .summary{font-size:0.875rem;margin:0 0 0.625rem;}
+  .insight{background:var(--page);border-radius:0.5rem;padding:0.625rem 0.75rem;font-size:0.8438rem;color:var(--muted);margin:0 0 0.75rem;}
+  .stack{display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:0.625rem;}
+  .stack span{font-family:var(--mono);font-size:0.6875rem;padding:0.1875rem 0.5rem;background:var(--page);border-radius:0.375rem;color:var(--muted);}
+  .card-foot{display:flex;flex-wrap:wrap;align-items:center;gap:0.875rem;}
+  .links{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .links a{font-size:0.7812rem;font-weight:700;text-decoration:none;border:1px solid var(--accent);border-radius:62.4375rem;padding:0.1875rem 0.6875rem;}
+  .more-btn{font-family:var(--sans);font-size:0.7812rem;background:none;border:none;color:var(--accent);cursor:pointer;padding:0;font-weight:700;}
+  .detail{display:none;margin-top:0.625rem;padding-top:0.625rem;border-top:1px solid var(--line);font-size:0.8438rem;}
+  .detail.open{display:block;}
+
+  /* ---------- services ---------- */
+  .services{display:grid;grid-template-columns:1fr;gap:var(--gap);}
+  @media (min-width:720px){.services{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media (min-width:1200px){.services{grid-template-columns:repeat(4,minmax(0,1fr));}}
+  .service{background:var(--panel);border-radius:1rem;padding:var(--card-pad);box-shadow:0 0.25rem 1rem rgba(15,61,36,0.06);border-top:0.25rem solid var(--accent);}
+  .service h3{font-size:1rem;margin:0 0 0.375rem;}
+  .service p{font-size:0.8438rem;margin:0 0 0.625rem;}
+  .service .proof{font-size:0.7812rem;color:var(--muted);margin:0;}
+  .contact-box{margin-top:1rem;background:var(--panel);border-radius:1rem;padding:var(--card-pad);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem;box-shadow:0 0.25rem 1rem rgba(15,61,36,0.06);}
+  .contact-box p{margin:0;font-size:0.875rem;}
+
+  /* ---------- stack board / footer ---------- */
+  .stackboard{margin-top:2.5rem;background:var(--panel);border-radius:1.25rem;padding:var(--card-pad);box-shadow:0 0.25rem 1rem rgba(15,61,36,0.06);}
+  .stackboard h2{font-size:0.9375rem;color:var(--muted);font-weight:700;margin:0 0 0.875rem;}
+  .stackboard .rows div{margin-bottom:0.5rem;font-size:0.8438rem;}
+  .stackboard .rows b{color:var(--accent);font-weight:700;margin-right:0.5rem;}
+  footer{margin-top:2rem;font-size:0.8438rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;}
+</style>
+</head>
+<body>
+<div class="bg-decor" aria-hidden="true"><i class="dot-m g" style="top:6%;left:3%"></i><i class="plus b" style="top:14%;right:4%"></i><i class="ring g" style="top:34%;left:1.5%"></i><i class="dot-s r" style="top:46%;right:2.5%"></i><i class="plus g" style="top:62%;left:3.5%"></i><i class="ring b" style="top:74%;right:3%"></i><i class="dot-s b" style="top:88%;left:6%"></i><i class="dot-m g" style="top:93%;right:8%"></i></div>
+<div class="wrap">
+
+  <section class="hero">
+    <div>
+      <div class="keywords">
+        <span class="kw">풀스택</span><span class="kw">웹/앱</span><span class="kw">임베디드</span><span class="kw">AI 자동화</span><span class="kw">CS</span>
+      </div>
+      <h1>홍희빈</h1>
+      <p class="bio"><span class="em-ul">장비 펌웨어부터 서버, 웹과 앱까지</span>. 필요한 건 직접 만들고, 끝까지 돌아가게 만듭니다. <strong>Claude Code와 MCP</strong>로 반복 작업을 자동화해 더 빠르게 배우고 더 많이 만듭니다.</p>
+      <p class="bio-sub">최근 · 알리콘(주) IoT팀 (2025.12 – 2026.09) — 무인 출입 장비 개발·운영, 사내 AI 자동화</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">프로젝트 문의</a>
+        <a class="btn ghost" href="https://github.com/heebin-h" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="icon-panel" aria-hidden="true">
+      <div class="circle">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="38" y="38" width="24" height="24" rx="3" stroke="#FFFFFF" stroke-width="3"/>
+          <path d="M50 38V22M50 78V62M38 50H22M78 50H62" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="22" cy="50" r="3.5" fill="#FFFFFF"/>
+          <circle cx="78" cy="50" r="3.5" fill="#FFFFFF"/>
+          <circle cx="50" cy="22" r="3.5" fill="#FFFFFF"/>
+          <circle cx="50" cy="78" r="3.5" fill="#FFFFFF"/>
+        </svg>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#filters">프로젝트 보기 ↓</a>
+  </section>
+
+  <div class="filters" id="filters"></div>
+
+  <section class="proj-section work" id="sec-work">
+    <div class="section-head">
+      <span class="sec-label">WORK</span>
+      <h2>업무 프로젝트</h2>
+      <p>알리콘(주) IoT팀에서 맡았던 일 가운데 대표 작업만 골랐습니다.</p>
+    </div>
+    <div class="grid" id="grid-work"></div>
+  </section>
+
+  <section class="proj-section personal" id="sec-personal">
+    <div class="section-head">
+      <span class="sec-label">PERSONAL</span>
+      <h2>개인 프로젝트</h2>
+      <p>직접 기획하고 만든 웹·앱·도구입니다. 데모와 코드를 바로 확인할 수 있습니다.</p>
+    </div>
+    <div class="grid" id="grid-personal"></div>
+  </section>
+
+  <div class="section-head" id="contact">
+    <h2>맡을 수 있는 작업</h2>
+    <p>외주·협업 문의를 받습니다. 아래는 위 프로젝트로 직접 해 본 일입니다.</p>
+  </div>
+  <div class="services">
+    <div class="service">
+      <h3>임베디드·IoT 연동</h3>
+      <p>센서·릴레이·QR 리더 같은 장비 제어, Linux(systemd) 상시 운영, MQTT·AWS IoT 연동.</p>
+      <p class="proof">근거: 무인 출입 제어 시스템 · 에러 기록 분석</p>
+    </div>
+    <div class="service">
+      <h3>서버 없는 웹앱</h3>
+      <p>GitHub Pages 같은 정적 호스팅만으로 돌아가는 웹앱, WebRTC P2P 실시간 기능, 지도 기반 서비스.</p>
+      <p class="proof">근거: Callsign · Mini Crimes · Schedule in Map</p>
+    </div>
+    <div class="service">
+      <h3>Android·모바일 앱</h3>
+      <p>Kotlin·Jetpack Compose 오프라인 앱, React PWA·Capacitor 앱.</p>
+      <p class="proof">근거: 암기장(MemoApp) · FitPle</p>
+    </div>
+    <div class="service">
+      <h3>AI 업무 자동화</h3>
+      <p>Claude Code 커스텀 스킬·hook과 MCP로 Slack·Linear·Sentry 같은 업무 도구를 묶는 자동화.</p>
+      <p class="proof">근거: 업무 AI 자동화 · 개인 AI 개발 환경</p>
+    </div>
+  </div>
+  <div class="contact-box">
+    <p>문의: <a href="mailto:hb129.h@gmail.com">hb129.h@gmail.com</a></p>
+    <a class="btn solid" href="mailto:hb129.h@gmail.com?subject=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98">메일 보내기</a>
+  </div>
+
+  <section class="stackboard">
+    <h2>기술 스택</h2>
+    <div class="rows">
+      <div><b>언어</b>Python, C, Kotlin, JavaScript/TypeScript, Bash</div>
+      <div><b>인프라</b>MQTT, AWS IoT Core, Uptime Kuma</div>
+      <div><b>웹/앱</b>React, Vite, PWA, WebRTC(PeerJS), Leaflet, Express, Socket.IO, Android(Kotlin·Jetpack Compose), Capacitor</div>
+      <div><b>AI·자동화</b>Claude Code, MCP(Slack·Linear·Sentry), 커스텀 스킬·Hooks</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>GitHub: <a href="https://github.com/heebin-h" target="_blank" rel="noopener">github.com/heebin-h</a></span>
+    <span>이메일: <a href="mailto:hb129.h@gmail.com">hb129.h@gmail.com</a></span>
+  </footer>
+
+</div>
+
+<script>
+const GH = 'https://github.com/heebin-h/';
+const projects = [
+  /* ---------------- 업무 ---------------- */
+  {id:'c16', kind:'work', title:'업무 AI 자동화 (Claude Code · MCP)', cats:['ai','backend'], core:true,
+    summary:'Claude Code를 업무 도구로 들여와, 장애 조사에 쓰는 커스텀 스킬과 Slack·Linear·Sentry MCP 연동을 직접 만들었다.',
+    insight:'MQTT 메시지 추적, IR 컨트롤러 추적, 출입 QR 추적처럼 반복되던 조사 절차를 스킬로 만들어, 같은 조사를 매번 처음부터 하지 않도록 했다.',
+    stack:['Claude Code','MCP','커스텀 스킬','Sentry','Linear','Slack'],
+    detail:'흩어져 있던 사내 문서와 작업 기록을 하나의 지식베이스로 모으고, 문서끼리 내용이 충돌할 때 어느 쪽을 따를지 정하는 우선순위 규칙과 정리 파이프라인을 설계했다.'},
+  {id:'c1', kind:'work', title:'무인 출입 제어 시스템', cats:['embedded','backend'], core:true,
+    summary:'QR·TOTP 인증으로 문을 여는 무인 출입 시스템의 장비 쪽 모듈을 개발·유지보수했다. 하드웨어 플랫폼별 변형 4종을 함께 다뤘다.',
+    insight:'배포된 장비에서 인증에 성공할 때마다 프로그램이 죽어 출입이 막히는 장애가 있었다. 로그를 따라가 함수 반환값 개수가 어긋나는 지점을 찾았고, 원인이 버전관리 밖에 있던 설정 파일이라는 것까지 확인해 복구했다.',
+    stack:['Python','Redis(Lua)','MQTT','AWS IoT Core','GPIO','systemd','TOTP'],
+    detail:'정상 장비에는 없고 일부 배포 장비에만 있는 문제여서, 두 환경의 차이를 하나씩 비교하며 범위를 좁혔다. 복구한 뒤에는 재배포 체크리스트에 설정 파일 점검 항목을 추가했다.'},
+  {id:'c6', kind:'work', title:'에러 기록 분석·정리', cats:['backend','cs'], core:true,
+    summary:'33개 모듈에서 나온 <span class="em-red">에러 220건</span>을 하나씩 확인해 원인별로 분류했다.',
+    insight:'자주 반복되는 원인을 10가지 유형으로 묶고, 유형마다 확인하는 방법을 정리했다. 연결 시간 초과, 인증서 상태 이상, 데이터 형식 오류로 인한 종료처럼 라이브러리를 잘못 쓸 때 생기는 문제가 많았다.',
+    stack:['Sentry','Python','로그 분석'],
+    detail:'새 에러가 들어오면 정리해 둔 유형에 먼저 대입해 원인 후보를 좁힐 수 있도록 만든 자료다.'},
+  {id:'c11', kind:'work', title:'CS 업무 문서화', cats:['cs'], core:true,
+    summary:'고객 문의 접수·기록·전달이 담당자 기억에 의존하던 CS 업무를 문서 59종으로 정리했다.',
+    insight:'담당자 인터뷰(Q&A 46개)로 필요한 내용을 모은 뒤, 긴급도 기준, 제품별 1차 조치 가이드, 표준 응대 메시지, 신입 안내 문서를 만들었다.',
+    stack:['문서화','프로세스 정리'],
+    detail:'처음 맡은 사람도 문서만 보고 스스로 판단할 수 있도록 판단 순서까지 적는 것을 목표로 했다.'},
+  {id:'c17', kind:'personal', title:'개인 AI 개발 환경', cats:['ai'], core:true,
+    summary:'Claude Code에 직접 만든 스킬과 hook을 붙여, 작업 세션이 끝나면 기록이 주제별 wiki에 자동으로 쌓이는 개인 개발 환경을 운영한다.',
+    insight:'정해진 종료 문구를 hook이 감지해 저장할 wiki를 고르고, 스킬이 세션 기록 저장과 월별 색인 갱신을 맡는다. 애매한 입력은 저장하지 않고 안내만 하도록 해 기록이 엉뚱한 곳에 쌓이지 않게 했다.',
+    stack:['Claude Code','Hooks','Custom Skills','Python','Obsidian'],
+    detail:'취업·로봇·DIY 세 영역의 wiki를 따로 두고, 주제별 정리 문서는 요청할 때만 만들도록 역할을 나눴다. 아래 개인 프로젝트 중 Callsign·Mini Crimes·암기장은 이 환경에서 기획 → 구현 → 독립 리뷰 순서로 진행했다.'},
+  {id:'p1', kind:'personal', title:'Callsign — 브라우저 무전기', cats:['frontend'], core:true,
+    summary:'버튼을 누르는 동안 녹음하고, 손을 떼면 참여자 전원에게 음성을 보내는 무전기 웹앱. <span class="em-red">서버 없이</span> GitHub Pages와 WebRTC만으로 동작한다.',
+    insight:'호스트가 음성을 중계하는 Star 구조로 구현을 단순하게 유지했고, 한 명이 말하는 동안 다른 사람의 송신을 막는 채널 잠금을 넣었다. 브라우저마다 다른 녹음 형식(Chrome·Firefox는 WebM/Opus, Safari는 MP4)도 처리했다.',
+    stack:['JavaScript','WebRTC','PeerJS','MediaRecorder API','GitHub Pages'],
+    links:[['데모','https://heebin-h.github.io/callsign/'],['GitHub',GH+'callsign']],
+    detail:'방은 랜덤 Peer ID를 URL로 공유하는 방식으로 정했다. 순번 ID 방식은 PeerJS 문서가 ID 충돌을 경고해 버렸다. 송신자 연결이 끊기면 채널 잠금이 풀리지 않는 한계가 있어, heartbeat 기반 자동 해제를 다음 과제로 두고 있다.'},
+  {id:'p2', kind:'personal', title:'Mini Crimes — 온라인 추리 보드게임', cats:['frontend','backend'], core:true,
+    summary:'여러 명이 같은 방에서 단서를 공유하며 범인·수단·동기를 추리하는 웹 보드게임. 솔로 플레이도 지원하고, 케이스 시나리오까지 직접 설계했다.',
+    insight:'처음엔 Express·Socket.IO 서버로 만들었고, 서버 없이 운영하도록 방장 브라우저가 방 역할을 맡는 WebRTC P2P 구조로 전환하고 있다. 정답 공개 후 재시작, 방 생성 탈취처럼 규칙을 깨는 경로를 독립 리뷰로 찾아 막았다.',
+    stack:['React 19','Vite','WebRTC(PeerJS)','Express','Socket.IO','Playwright'],
+    links:[['GitHub',GH+'mini-crimes']],
+    detail:'단위 테스트(node --test)와 브라우저 두 개를 띄워 확인하는 Playwright P2P E2E 테스트, CI lint·test를 갖췄고 모바일 화면도 대응했다. 서버 없는 버전은 현재 브랜치에서 마무리 중이다.'},
+  {id:'p3', kind:'personal', title:'Schedule in Map — 일정 지도 공유', cats:['frontend'], core:false,
+    summary:'여러 장소를 도는 일정을 지도 위 루트로 공유하는 정적 웹앱. DB 없이 저장소 안 JSON 파일이 곧 데이터다.',
+    insight:'일정 편집기에서 지도를 클릭해 정거장을 찍으면 JSON을 만들어 주고, 커밋하면 사이트에 바로 반영된다. URL에 브랜치 이름을 붙이면 그 브랜치의 데이터를 읽게 해, 브랜치 하나가 일정 세트 하나가 되도록 했다.',
+    stack:['JavaScript(ES Modules)','Leaflet','GitHub Pages'],
+    links:[['데모','https://heebin-h.github.io/schedule-in-map/'],['GitHub',GH+'schedule-in-map']],
+    detail:'초대 코드는 처음에 SHA-256 해시로 저장했지만, crypto.subtle이 https가 아닌 환경에서 없어 검증이 조용히 실패하는 문제가 있었다. 데이터가 어차피 공개라 해시가 실질적인 보안이 아니라고 판단해 평문 코드로 바꾸고, 가벼운 잠금이라는 한계를 문서에 적었다.'},
+  {id:'p4', kind:'personal', title:'암기장 (MemoApp) — Android 플래시카드', cats:['frontend'], core:true,
+    summary:'서버·계정 없이 동작하는 오프라인 Android 플래시카드 앱. 폴더 > 메모장 > 카드로 정리하고, 라이트너 상자 방식 간격 반복으로 학습한다.',
+    insight:'개발 공부용으로 코드 블록·빈칸 카드·태그·직접 입력 채점·마크다운 가져오기를 넣었다. 저장은 원자적 쓰기로 하고, 손상된 파일은 격리해 덮어쓰지 않도록 해 데이터를 잃는 경로를 막았다.',
+    stack:['Kotlin','Jetpack Compose','Android SDK','Gradle'],
+    detail:'PIN 잠금은 솔트+PBKDF2 해시로만 저장하고, 화면 잠금이라 데이터 자체는 평문이라는 한계를 README에 그대로 적었다. 기능을 단계별로 나눠, 단계마다 독립 리뷰와 단위 테스트를 거친 뒤 커밋했다.'},
+  {id:'c8', kind:'personal', title:'FitPle — 운동 모임 매칭 앱', cats:['frontend'], core:false,
+    summary:'React + PWA + Capacitor로 만든 운동 모임 매칭 앱 데모. 모임·후기·스케줄·채팅 화면을 백엔드 없이 localStorage로 구현했다.',
+    insight:'iOS 앱을 무료로 배포하기 어려운 제약이 있어 설치 없이 쓰는 PWA를 기본으로 하고, 본인 기기 테스트용 iOS 빌드는 Capacitor로 열어 두었다.',
+    stack:['React','TypeScript','Vite','PWA','Capacitor','Zustand'],
+    links:[['GitHub',GH+'fitple-app']],
+    detail:'비밀번호 해싱(Web Crypto SHA-256)을 쓴 사용자 관리, 색상·글자 크기 디자인 토큰, 시드 데이터와 데모 계정을 구현했다. 같은 기획의 Android(Kotlin) 원본 앱도 따로 만들었다.'}
+];
+
+const catLabels = {ai:'AI·자동화', frontend:'웹·앱', backend:'백엔드·인프라', embedded:'임베디드', cs:'운영·CS'};
+let activeFilter = 'all';
+
+function renderFilters(){
+  const el = document.getElementById('filters');
+  const all = [['all','전체'], ...Object.entries(catLabels)];
+  el.innerHTML = all.map(([key,label]) =>
+    `<button class="chip${key===activeFilter?' active':''}" data-key="${key}">${label}</button>`
+  ).join('');
+  el.querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      activeFilter = btn.dataset.key;
+      renderFilters();
+      renderGrids();
+    });
+  });
+}
+
+function cardHtml(p){
+  const visible = activeFilter==='all' || p.cats.includes(activeFilter);
+  const tagText = p.cats.map(c=>catLabels[c]).join(' · ');
+  const stackHtml = p.stack.map(s=>`<span>${s}</span>`).join('');
+  const linksHtml = (p.links||[]).map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join('');
+  const hasDetail = p.detail && p.detail.length>0;
+  return `
+    <div class="card${p.core?' core':''}${visible?'':' hidden'}">
+      <div class="card-top">
+        <h3><span class="dot"></span>${p.title}</h3>
+        ${p.core?'<span class="badge">핵심</span>':''}
+      </div>
+      <div class="tags">${tagText}</div>
+      <p class="summary">${p.summary}</p>
+      <p class="insight">${p.insight}</p>
+      <div class="stack">${stackHtml}</div>
+      <div class="card-foot">
+        ${linksHtml ? `<div class="links">${linksHtml}</div>` : ''}
+        ${hasDetail ? `<button class="more-btn" data-id="${p.id}">자세히 보기 ▾</button>` : ''}
+      </div>
+      ${hasDetail ? `<div class="detail" id="detail-${p.id}">${p.detail}</div>` : ''}
+    </div>`;
+}
+
+function renderGrids(){
+  ['work','personal'].forEach(kind=>{
+    const list = projects.filter(p=>p.kind===kind);
+    document.getElementById('grid-'+kind).innerHTML = list.map(cardHtml).join('');
+    const anyVisible = list.some(p=>activeFilter==='all' || p.cats.includes(activeFilter));
+    document.getElementById('sec-'+kind).classList.toggle('hidden', !anyVisible);
+  });
+  document.querySelectorAll('.more-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const d = document.getElementById('detail-'+btn.dataset.id);
+      const open = d.classList.toggle('open');
+      btn.textContent = open ? '접기 ▴' : '자세히 보기 ▾';
+    });
+  });
+}
+
+renderFilters();
+renderGrids();
+</script>
+</body>
+</html>
