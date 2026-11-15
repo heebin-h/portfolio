@@ -43,22 +43,11 @@
     font-family:var(--sans);
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+    overflow-wrap:break-word;
     position:relative;
     overflow-x:hidden;
   }
-  .bg-decor{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
-  .bg-decor i{position:absolute;display:block;}
-  .bg-decor .dot-s{width:0.5rem;height:0.5rem;border-radius:50%;}
-  .bg-decor .dot-m{width:0.75rem;height:0.75rem;border-radius:50%;}
-  .bg-decor .ring{width:1.125rem;height:1.125rem;border-radius:50%;border:0.125rem solid currentColor;}
-  .bg-decor .plus{width:0.875rem;height:0.875rem;}
-  .bg-decor .plus::before,.bg-decor .plus::after{content:'';position:absolute;background:currentColor;border-radius:1px;}
-  .bg-decor .plus::before{left:0.375rem;top:0;width:0.125rem;height:0.875rem;}
-  .bg-decor .plus::after{top:0.375rem;left:0;width:0.875rem;height:0.125rem;}
-  .g{background:#22C55E;color:#22C55E;opacity:.45;}
-  .b{background:#3B82F6;color:#3B82F6;opacity:.35;}
-  .r{background:#EF4444;color:#EF4444;opacity:.35;}
-  .bg-decor .ring,.bg-decor .plus{background:none;}
   a{color:var(--accent);}
   .wrap{--pad-y:clamp(12px,1.8vw,32px);--gap:clamp(12px,1.3vw,26px);--card-pad:clamp(16px,1.4vw,28px);margin:0;padding:var(--pad-y) clamp(16px,3vw,72px) 6rem;}
 
@@ -81,14 +70,16 @@
   .keywords{display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1rem;}
   .kw{display:inline-block;font-size:0.8125rem;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,0.3);border:1px solid #FFFFFF;border-radius:62.4375rem;padding:0.25rem 0.75rem;}
   .hero h1{font-size:3.75rem;line-height:1.15;font-weight:700;margin:0 0 0.5rem;color:#FFFFFF;}
-  .hero p.bio{font-size:1.125rem;line-height:1.75;max-width:52ch;margin:0 0 0.625rem;color:#F3FCF6;}
+  .hero p.bio{font-size:1.125rem;line-height:1.75;max-width:min(100%,42em);margin:0 0 0.625rem;color:#F3FCF6;}
   /* 타이포 구간 고정 (docs/responsive-design.md §3) */
   @media (max-width:719px){.hero h1{font-size:2.75rem;}.hero p.bio{font-size:1.0625rem;}}
   @media (min-width:720px) and (max-width:1199px){.hero h1{font-size:3.25rem;}}
   @media (min-width:1600px){.hero h1{font-size:4.25rem;}}
-  .hero p.bio-sub{font-size:0.8438rem;margin:0 0 1.25rem;color:#DDF5E5;}
+  .news{margin:0 0 1.25rem;color:#DDF5E5;font-size:0.84rem;}
+  .news-title{margin:0 0 0.25rem;font-size:0.875rem;font-weight:700;color:#FFFFFF;}
+  .news ul{margin:0;padding-left:1.1em;}
+  .news li{margin:0.1rem 0;}
   .em-red{color:var(--red);font-weight:700;}
-  .em-ul{text-decoration:underline;text-decoration-thickness:0.125rem;text-underline-offset:0.25rem;}
   .cta{display:flex;flex-wrap:wrap;gap:0.5rem;}
   .btn{display:inline-block;font-size:0.875rem;font-weight:700;text-decoration:none;border-radius:62.4375rem;padding:0.5625rem 1.125rem;}
   .btn.primary{background:#FFFFFF;color:#0F3D24;}
@@ -109,6 +100,7 @@
   .proj-section.work{background:var(--work-bg);border:1px solid var(--work-line);}
   .scroll-cue{position:absolute;left:50%;bottom:1.375rem;transform:translateX(-50%);font-size:0.8125rem;font-weight:600;color:rgba(255,255,255,0.85);text-decoration:none;}
   .scroll-cue:hover{color:#FFFFFF;}
+  @media (max-width:1199px){.hero{min-height:0;}.scroll-cue{display:none;}}
   .proj-section.personal{background:var(--personal-bg);border:1px solid var(--personal-line);}
   .sec-label{display:inline-block;font-family:var(--mono);font-size:0.6875rem;font-weight:700;letter-spacing:0.08em;border-radius:0.375rem;padding:0.125rem 0.5rem;margin-bottom:0.5rem;}
   .work .sec-label{color:var(--accent);border:1px solid var(--work-line);}
@@ -164,20 +156,26 @@
 </style>
 </head>
 <body>
-<div class="bg-decor" aria-hidden="true"><i class="dot-m g" style="top:6%;left:3%"></i><i class="plus b" style="top:14%;right:4%"></i><i class="ring g" style="top:34%;left:1.5%"></i><i class="dot-s r" style="top:46%;right:2.5%"></i><i class="plus g" style="top:62%;left:3.5%"></i><i class="ring b" style="top:74%;right:3%"></i><i class="dot-s b" style="top:88%;left:6%"></i><i class="dot-m g" style="top:93%;right:8%"></i></div>
 <div class="wrap">
 
   <section class="hero">
     <div>
       <div class="keywords">
-        <span class="kw">풀스택</span><span class="kw">웹/앱</span><span class="kw">임베디드</span><span class="kw">AI 자동화</span><span class="kw">CS</span>
+        <span class="kw">풀스택</span><span class="kw">웹/앱</span><span class="kw">임베디드</span><span class="kw">AI 자동화</span><span class="kw">Agent</span><span class="kw">CS</span>
       </div>
       <h1>홍희빈</h1>
-      <p class="bio"><span class="em-ul">장비 펌웨어부터 서버, 웹과 앱까지</span>. 필요한 건 직접 만들고, 끝까지 돌아가게 만듭니다. <strong>Claude Code와 MCP</strong>로 반복 작업을 자동화해 더 빠르게 배우고 더 많이 만듭니다.</p>
-      <p class="bio-sub">최근 · 알리콘(주) IoT팀 (2025.12 – 2026.09) — 무인 출입 장비 개발·운영, 사내 AI 자동화</p>
+      <p class="bio">Agent와 함께 웹/앱부터 네트워크 장비 펌웨어와 회로/3D 설계까지 직접 만듭니다.<br>최소 10개 이상의 프로젝트 수행 경험을 통한 <strong>Claude/Codex Agent wiki</strong> 기반으로 원하는 작업물을 구현하겠습니다.</p>
+      <div class="news">
+        <p class="news-title">최근 소식</p>
+        <ul>
+          <li>현재 개인 프로젝트 작업 중</li>
+          <li>애니메이션 캐릭터 실사화, 다양한 게임/어플 개발</li>
+        </ul>
+      </div>
       <div class="cta">
-        <a class="btn primary" href="#contact">프로젝트 문의</a>
-        <a class="btn ghost" href="https://github.com/heebin-h" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn primary" href="https://github.com/heebin-h" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="#sec-work">업무 프로젝트 구경</a>
+        <a class="btn ghost" href="#sec-personal">개인 프로젝트 구경</a>
       </div>
     </div>
     <div class="icon-panel" aria-hidden="true">
@@ -201,7 +199,7 @@
     <div class="section-head">
       <span class="sec-label">WORK</span>
       <h2>업무 프로젝트</h2>
-      <p>알리콘(주) IoT팀에서 맡았던 일 가운데 대표 작업만 골랐습니다.</p>
+      <p>알리콘(주) IoT팀(2025.12 – 2026.09)에서 맡았던 일 가운데 대표 작업만 골랐습니다.</p>
     </div>
     <div class="grid" id="grid-work"></div>
   </section>
