@@ -28,16 +28,16 @@
 
 | 요소 | XS | M | L | XL |
 |---|---|---|---|---|
-| 이름 (h1, 명조) | 3rem → 45px | 3.75rem → 56px | 4.5rem → 72px | 5rem → 85px |
+| 이름 (h1) | 3rem → 45px | 3.75rem → 56px | 4.5rem → 72px | 5rem → 85px |
 | 소개 문장 | 1.0625rem → 16px | 〃 → 16px | 〃 → 17px | 〃 → 18px |
-| 섹션 제목 (h2, 명조) | 2rem → 30px | 〃 → 30px | 〃 → 32px | 〃 → 34px |
-| 카드 제목 (명조) | 1.1875rem → 17.8px | 〃 | 〃 → 19px | 〃 → 20.2px |
+| 섹션 제목 (h2) | 2rem → 30px | 〃 → 30px | 〃 → 32px | 〃 → 34px |
+| 카드 제목 | 1.1875rem → 17.8px | 〃 | 〃 → 19px | 〃 → 20.2px |
 | 카드 본문 | 0.9375rem → 14px | 〃 | 〃 → 15px | 〃 → 16px |
 | 보조 글자 (태그·근거) | 0.75~0.875rem → 11~13px | 〃 | 12~14px | 12.8~14.9px |
 | 기술 칩 (mono) | 0.6875rem → 10.3px | 〃 | 11px | 11.7px |
 
-글꼴: 제목(이름·섹션·카드·작업·기술스택) **Noto Serif KR**, 본문 **IBM Plex Sans KR**, 기술 칩·섹션 라벨 **IBM Plex Mono**. 전부 Google Fonts.
-제목은 명조로 크게, 본문은 산세리프로 작게 — 제목/본문 대비로 에디토리얼(잡지형) 분위기를 만든다. 흔한 Pretendard·Inter + JetBrains Mono 조합은 쓰지 않는다.
+글꼴: 이름·제목·본문 전체 **Gmarket Sans**(Light 300 / Medium 500 / Bold 700, 눈누 jsDelivr CDN woff), 기술 칩·섹션 라벨 **IBM Plex Mono**.
+위계는 글꼴을 섞지 않고 크기·굵기 차이로만 준다(본문 Medium, 제목 Bold).
 
 ## 4. 레이아웃과 요소 크기 (창 폭에 실시간 반응)
 
@@ -91,3 +91,4 @@
 | 2026-11-16 | 배경 점·링·+ 장식 제거, hero 밑줄 강조 제거 |
 | 2026-11-16 | 색 체계 변경(초록 → 웜 화이트·블랙/차콜·절제된 블루), 카드 그림자 제거·얇은 경계선, 업무/개인 섹션 배경 통합 |
 | 2026-11-16 | 글꼴 교체(Pretendard·JetBrains Mono → Noto Serif KR·IBM Plex Sans KR·IBM Plex Mono), 제목 크기 확대·본문 한 단계 확대 |
+| 2026-11-16 | 명조 조합 폐기 → Gmarket Sans 단일 글꼴(제목 Bold·본문 Medium)로 교체 |
