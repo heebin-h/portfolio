@@ -70,7 +70,7 @@
   @media (max-width:719px){.hero{grid-template-columns:1fr;}}
   .keywords{display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1rem;}
   .kw{display:inline-block;font-size:0.8125rem;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,0.3);border:1px solid #FFFFFF;border-radius:62.4375rem;padding:0.25rem 0.75rem;}
-  .hero h1{font-family:var(--serif);font-size:4.5rem;line-height:1.2;font-weight:700;letter-spacing:-0.02em;margin:0 0 1rem;color:#FFFFFF;}
+  .hero h1{font-family:var(--serif);font-size:4.5rem;line-height:1.2;font-weight:500;letter-spacing:-0.02em;margin:0 0 1rem;color:#FFFFFF;}
   .hero p.bio{font-size:1.0625rem;line-height:1.95;max-width:min(100%,42em);margin:0 0 0.625rem;color:#EDEBE7;}
   /* 타이포 구간 고정 (docs/responsive-design.md §3) */
   @media (max-width:719px){.hero h1{font-size:3rem;}}
@@ -93,7 +93,7 @@
 
   /* ---------- section ---------- */
   .section-head{margin:2.5rem 0 0.875rem;}
-  .section-head h2{font-family:var(--serif);font-size:2rem;font-weight:700;margin:0;letter-spacing:-0.02em;line-height:1.3;}
+  .section-head h2{font-family:var(--serif);font-size:2rem;font-weight:500;margin:0;letter-spacing:-0.02em;line-height:1.3;}
   .section-head p{font-size:0.875rem;color:var(--muted);margin:0.25rem 0 0;}
   .proj-section{border-radius:0.5rem;padding:clamp(16px,2vw,40px);margin-top:1.5rem;}
   .proj-section.hidden{display:none;}
@@ -121,7 +121,7 @@
   .card{background:var(--panel);border-radius:0.375rem;padding:var(--card-pad);border:1px solid var(--line);min-width:0;}
   .card.hidden{display:none;}
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:0.625rem;margin-bottom:0.375rem;}
-  .card h3{font-family:var(--serif);font-size:1.1875rem;margin:0;font-weight:700;line-height:1.5;}
+  .card h3{font-family:var(--serif);font-size:1.1875rem;margin:0;font-weight:500;line-height:1.5;}
   .dot{display:inline-block;width:calc(0.5rem / var(--sx));height:0.5rem;border-radius:50%;background:var(--line);margin-right:0.5rem;vertical-align:middle;}
   .card.core .dot{background:var(--accent);}
   .badge{font-size:0.6875rem;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:62.4375rem;padding:0.125rem 0.5625rem;white-space:nowrap;}
@@ -142,7 +142,7 @@
   @media (min-width:720px){.services{grid-template-columns:repeat(2,minmax(0,1fr));}}
   @media (min-width:1200px){.services{grid-template-columns:repeat(4,minmax(0,1fr));}}
   .service{background:var(--panel);border-radius:0.375rem;padding:var(--card-pad);border:1px solid var(--line);border-top:2px solid var(--accent);}
-  .service h3{font-family:var(--serif);font-size:1.125rem;margin:0 0 0.375rem;}
+  .service h3{font-family:var(--serif);font-size:1.125rem;font-weight:500;margin:0 0 0.375rem;}
   .service p{font-size:0.875rem;margin:0 0 0.625rem;}
   .service .proof{font-size:0.7812rem;color:var(--muted);margin:0;}
   .contact-box{margin-top:1rem;background:var(--panel);border-radius:0.375rem;border:1px solid var(--line);padding:var(--card-pad);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem;}
@@ -150,7 +150,7 @@
 
   /* ---------- stack board / footer ---------- */
   .stackboard{margin-top:2.5rem;background:var(--panel);border-radius:0.375rem;padding:var(--card-pad);border:1px solid var(--line);}
-  .stackboard h2{font-family:var(--serif);font-size:1.25rem;color:var(--ink);font-weight:700;margin:0 0 0.875rem;}
+  .stackboard h2{font-family:var(--serif);font-size:1.25rem;color:var(--ink);font-weight:500;margin:0 0 0.875rem;}
   .stackboard .rows div{margin-bottom:0.5rem;font-size:0.8438rem;}
   .stackboard .rows b{color:var(--accent);font-weight:700;margin-right:0.5rem;}
   footer{margin-top:2rem;font-size:0.8438rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;}
@@ -201,8 +201,7 @@
 
   <section class="proj-section work" id="sec-work">
     <div class="section-head">
-      <span class="sec-label">WORK</span>
-      <h2>업무 프로젝트</h2>
+      <h2>Work Projects</h2>
       <p>알리콘(주) IoT팀(2025.12 – 2026.09)에서 맡았던 일 가운데 대표 작업만 골랐습니다.</p>
     </div>
     <div class="grid" id="grid-work"></div>
@@ -210,15 +209,14 @@
 
   <section class="proj-section personal" id="sec-personal">
     <div class="section-head">
-      <span class="sec-label">PERSONAL</span>
-      <h2>개인 프로젝트</h2>
+      <h2>Personal Projects</h2>
       <p>직접 기획하고 만든 웹·앱·도구입니다. 데모와 코드를 바로 확인할 수 있습니다.</p>
     </div>
     <div class="grid" id="grid-personal"></div>
   </section>
 
   <div class="section-head" id="contact">
-    <h2>맡을 수 있는 작업</h2>
+    <h2>Services</h2>
     <p>외주·협업 문의를 받습니다. 아래는 위 프로젝트로 직접 해 본 일입니다.</p>
   </div>
   <div class="services">
@@ -249,12 +247,15 @@
   </div>
 
   <section class="stackboard">
-    <h2>기술 스택</h2>
+    <h2>Tech Stack</h2>
     <div class="rows">
       <div><b>언어</b>Python, Kotlin, JavaScript/TypeScript, Bash</div>
       <div><b>인프라</b>MQTT, AWS IoT Core, Uptime Kuma</div>
       <div><b>웹/앱</b>React, Vite, PWA, WebRTC(PeerJS), Leaflet, Express, Socket.IO, Android(Kotlin·Jetpack Compose), Capacitor</div>
       <div><b>AI·자동화</b>Claude Code, MCP(Slack·Linear·Sentry), 커스텀 스킬·Hooks</div>
+      <div style="border-top:1px solid var(--line);margin:0.875rem 0 0.75rem;"></div>
+      <div><b>기능사</b>정보처리기능사, 자동화설비기능사, 3D프린터운용기능사</div>
+      <div><b>AI</b>KT AICE BASIC</div>
     </div>
   </section>
 
